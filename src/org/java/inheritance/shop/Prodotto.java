@@ -14,7 +14,18 @@ public class Prodotto {
     private BigDecimal productPrice;
     private BigDecimal productIva;
 
-    // COSTRUTTORI
+    // COSTRUTTORE SENZA ARGOMENTI
+
+    public Prodotto() {
+        // Inizializza eventuali variabili di istanza con valori di default
+        this.productCode = 0;
+        this.productName = "";
+        this.productDescription = "";
+        this.productPrice = BigDecimal.ZERO;
+        this.productIva = BigDecimal.ZERO;
+    }
+
+    // COSTRUTTORE CON ARGOMENTI
     public Prodotto(String productName, String productDescription, BigDecimal productPrice, BigDecimal productIva) {
         this.productCode = generateRandomCode();
         this.productName = productName;
@@ -99,5 +110,10 @@ public class Prodotto {
     private int generateRandomCode() {
         // Num random tra 1000 e 9999
         return 1000 + random.nextInt(9000);
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + getProductName() + ", Descrizione: " + getProductDescription() + ", Prezzo: " + getProductPrice();
     }
 }
